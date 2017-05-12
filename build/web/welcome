@@ -1,0 +1,93 @@
+<%-- 
+    Document   : signup
+    Created on : Mar 3, 2017, 6:53:09 PM
+    Author     : GTB Student
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Signup</title>
+        <%@include file="headercss.jsp" %>
+        <%@page import="java.sql.*" %>
+        <%@include file="variables.jsp" %>
+    </head>
+    <body>
+        <%@include file="header.jsp" %>
+        <section id="contact-page">
+        <div class="container">
+            
+          <h1 style="color:black;text-align:center">Login</h1>
+          <form name="form1" method="post" action="">
+            <table width="500" border="0" cellspacing="0" cellpadding="5">
+              <tr>
+                <td width="146">Username</td>
+                <td width="334"><label for="uname"></label>
+                <input type="text" name="uname" id="uname" class="form-control"></td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td><label for="password"></label>
+                <input type="password" name="password" id="password" class="form-control"></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" name="Submit" id="Submit" value="Login" class="btn btn-primary btn-lg">
+                <input type="reset" name="Reset" id="Reset" value="Reset" class="btn btn-primary btn-lg"></td>
+              </tr>
+            </table>
+          </form>
+          <%
+              if(request.getParameter("Submit")!=null)
+              {
+                  Connection myconnection;
+           
+              try
+              {
+                  myconnection=DriverManager.getConnection(path+place,username,password);
+                  try
+                  { 
+                      String query="select * from usertable where username=? and password=?";
+                      PreparedStatement mystatement=myconnection.prepareStatement(query);
+                      mystatement.setString(1,request.getParameter("uname"));
+                      mystatement.setString(2,request.getParameter("password"));
+                      
+                      ResultSet myresult=mystatement.executeQuery();
+                      if(myresult.next())
+                      {
+                          response.sendRedirect("welcome.jsp");
+                      }
+                      else
+                      {
+                          out.println("Wrong username/password");
+                      }
+                      
+                      
+                      
+                  }
+                  catch(Exception e)
+                  {
+                  out.println("Error Occured in Query " + e.getMessage());                      
+                  }
+                  finally
+                  {
+                     myconnection.close();
+                  }
+              }
+              catch(Exception e)
+              {
+                  out.println("Error Occured while establishing connection " + e.getMessage());
+              }
+                  
+                  
+              }
+              
+              
+          %>
+        </div>
+            </section>
+        <%@include file="footer.jsp" %>
+    </body>
+</html>

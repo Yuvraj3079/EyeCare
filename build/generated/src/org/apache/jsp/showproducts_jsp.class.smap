@@ -1,0 +1,32 @@
+SMAP
+showproducts_jsp.java
+JSP
+*S JSP
+*F
++ 0 showproducts.jsp
+showproducts.jsp
++ 1 variables.jsp
+variables.jsp
++ 2 headercss.jsp
+headercss.jsp
++ 3 header.jsp
+header.jsp
++ 4 footer.jsp
+footer.jsp
+*L
+5,11:61
+2#1,7:72
+15#0,8:79
+1#2,15:87
+22#0,4:102
+1#3,7:106
+8,6:114
+13,51:120
+64,12:172
+75,9:184
+25#0,8:193
+34,62:202
+95,7:264
+1#4,25:271
+101#0,4:295
+*E

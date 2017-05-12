@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2017 7:27:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="myhibernate.Producttable" table="producttable" catalog="eyecaredb" optimistic-lock="version">
+        <id name="productid" type="java.lang.Integer">
+            <column name="productid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categorytable" class="myhibernate.Categorytable" fetch="select">
+            <column name="catid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subcategory" class="myhibernate.Subcategory" fetch="select">
+            <column name="subcatid" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="100" not-null="true" />
+        </property>
+        <property name="price" type="int">
+            <column name="price" not-null="true" />
+        </property>
+        <property name="features" type="string">
+            <column name="features" length="100" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" length="100" not-null="true" />
+        </property>
+        <property name="qty" type="int">
+            <column name="qty" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

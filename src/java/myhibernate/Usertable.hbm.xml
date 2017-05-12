@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2017 7:27:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="myhibernate.Usertable" table="usertable" catalog="eyecaredb" optimistic-lock="version">
+        <id name="username" type="string">
+            <column name="username" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" length="500" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="100" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="500" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="100" not-null="true" />
+        </property>
+        <property name="emailid" type="string">
+            <column name="emailid" length="100" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="100" not-null="true" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

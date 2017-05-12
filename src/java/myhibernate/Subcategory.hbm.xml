@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2017 7:27:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="myhibernate.Subcategory" table="subcategory" catalog="eyecaredb" optimistic-lock="version">
+        <id name="subcatid" type="java.lang.Integer">
+            <column name="subcatid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categorytable" class="myhibernate.Categorytable" fetch="select">
+            <column name="catid" not-null="true" />
+        </many-to-one>
+        <property name="subcatname" type="string">
+            <column name="subcatname" length="100" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" length="100" not-null="true" />
+        </property>
+        <set name="producttables" table="producttable" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="subcatid" not-null="true" />
+            </key>
+            <one-to-many class="myhibernate.Producttable" />
+        </set>
+    </class>
+</hibernate-mapping>

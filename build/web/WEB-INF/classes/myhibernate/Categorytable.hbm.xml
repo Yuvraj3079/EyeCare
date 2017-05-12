@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2017 7:27:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="myhibernate.Categorytable" table="categorytable" catalog="eyecaredb" optimistic-lock="version">
+        <id name="catid" type="java.lang.Integer">
+            <column name="catid" />
+            <generator class="identity" />
+        </id>
+        <property name="catname" type="string">
+            <column name="catname" length="100" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" length="100" not-null="true" />
+        </property>
+        <set name="subcategories" table="subcategory" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="catid" not-null="true" />
+            </key>
+            <one-to-many class="myhibernate.Subcategory" />
+        </set>
+        <set name="producttables" table="producttable" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="catid" not-null="true" />
+            </key>
+            <one-to-many class="myhibernate.Producttable" />
+        </set>
+    </class>
+</hibernate-mapping>
